@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 3 — checkbox e radio
+  Tópico: escolha múltipla (checkbox) x escolha única (radio com o mesmo name)
+
+  O que fazer:
+  1. Marque mais de um "extra" — repare que todos podem ficar marcados juntos.
+  2. Tente marcar mais de um "tipo de pacote" — repare que marcar um
+     desmarca o outro automaticamente. Isso acontece porque os três
+     radios compartilham o mesmo atributo "name".
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 3 — checkbox e radio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Orçamento de pacote — VaiTorcer</h1>
+
+  <form>
+
+    <h2>Tipo de pacote (escolha só um)</h2>
+
+    <!--
+      Os três <input type="radio"> abaixo têm name="pacote" IGUAL nos três.
+      É esse "name" repetido que faz o navegador entender que eles formam
+      UM ÚNICO grupo de escolha: marcar um desmarca automaticamente os outros.
+      Repare que o "id" de cada um é DIFERENTE — o id nunca pode se repetir
+      na página, é o "name" que agrupa, não o "id".
+    -->
+    <div class="opcao">
+      <input type="radio" id="pacote-economico" name="pacote" value="economico" />
+      <label for="pacote-economico">Econômico</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="pacote-conforto" name="pacote" value="conforto" />
+      <label for="pacote-conforto">Conforto</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="pacote-premium" name="pacote" value="premium" />
+      <label for="pacote-premium">Premium</label>
+    </div>
+
+    <h2>Extras (pode marcar vários)</h2>
+
+    <!--
+      Cada <input type="checkbox"> abaixo é INDEPENDENTE dos outros —
+      marcar um não afeta os demais, por isso é possível marcar
+      quantos quiser ao mesmo tempo. Diferente do radio, o checkbox
+      não precisa de um "name" compartilhado para funcionar.
+    -->
+    <div class="opcao">
+      <input type="checkbox" id="ingresso" name="ingresso" value="sim" />
+      <label for="ingresso">Ingresso para o jogo</label>
+    </div>
+    <div class="opcao">
+      <input type="checkbox" id="seguro" name="seguro" value="sim" />
+      <label for="seguro">Seguro viagem</label>
+    </div>
+    <div class="opcao">
+      <input type="checkbox" id="traslado" name="traslado" value="sim" />
+      <label for="traslado">Traslado do aeroporto</label>
+    </div>
+
+    <button type="submit">Solicitar orçamento</button>
+
+  </form>
+
+</body>
+</html>

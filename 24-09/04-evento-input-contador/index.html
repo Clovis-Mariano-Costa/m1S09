@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 4 — Evento "input" e contador de caracteres
+  Tópico: diferença entre o evento "input" (a cada tecla) e "change" (só ao terminar)
+
+  O que fazer:
+  1. Digite no campo de observações e observe o contador mudando
+     a CADA letra digitada.
+  2. Escolha uma cidade na lista suspensa e observe a mensagem que
+     aparece embaixo dela SÓ quando você troca de opção.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 4 — eventos input e change</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>Observações do orçamento</h1>
+
+  <!-- maxlength="200" limita quanto o usuário PODE digitar; o contador abaixo só mostra quanto ele JÁ digitou -->
+  <label for="observacoes">Observações (máximo 200 caracteres):</label>
+  <textarea id="observacoes" rows="4" maxlength="200"></textarea>
+  <p id="contador">0/200 caracteres</p>
+
+  <label for="cidade">Cidade-sede:</label>
+  <select id="cidade">
+    <option value="">Selecione...</option>
+    <option value="cdmx">Cidade do México</option>
+    <option value="ny">Nova York</option>
+    <option value="miami">Miami</option>
+  </select>
+  <p id="avisoCidade"></p>
+
+</body>
+</html>

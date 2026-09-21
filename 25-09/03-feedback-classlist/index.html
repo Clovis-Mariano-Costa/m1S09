@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 3 — Feedback visual com classList
+  Tópico: simetria — cada ramo do código adiciona a SUA classe e remove a OPOSTA
+
+  O que fazer:
+  1. Envie o formulário com telefone incompleto — mensagem vermelha aparece.
+  2. Corrija o telefone (10 dígitos ou mais) e envie de novo — mensagem fica verde.
+  3. Envie com erro de novo — repare que a cor troca corretamente, sem
+     acumular vermelho e verde ao mesmo tempo.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 3 — feedback com classList</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>Cadastro de revendedor</h1>
+
+  <form id="form-cadastro">
+    <label for="telefone">Telefone (mínimo 10 dígitos):</label>
+    <input type="tel" id="telefone" name="telefone" required />
+
+    <button type="submit">Enviar cadastro</button>
+  </form>
+
+  <!-- Este parágrafo começa sem nenhuma classe — o script.js decide qual cor aplicar -->
+  <p id="mensagem"></p>
+
+</body>
+</html>

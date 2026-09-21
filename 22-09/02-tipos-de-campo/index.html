@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 2 — Tipos de campo
+  Tópico: type="email", "password", "number", "date", "tel" + placeholder, required, maxlength
+
+  O que fazer:
+  1. Abra com o Live Server e preencha cada campo.
+  2. Tente clicar em "Cadastrar" com o e-mail sem "@" — repare que
+     o navegador avisa sozinho, sem nenhum JavaScript.
+  3. Tente deixar o campo "Nome" vazio e enviar — o "required"
+     também bloqueia sozinho.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 2 — Tipos de campo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Cadastro de revendedor</h1>
+
+  <form>
+
+    <!--
+      required     -> o navegador não deixa enviar o formulário se este campo estiver vazio
+      placeholder  -> texto de exemplo que aparece DENTRO do campo e some ao digitar (não é o valor real)
+      maxlength    -> quantidade máxima de caracteres que o campo aceita
+    -->
+    <label for="nome">Nome completo:</label>
+    <input type="text" id="nome" name="nome" placeholder="ex: Maria Silva" required maxlength="40" />
+
+    <!--
+      type="email": além de exigir o formato de e-mail (precisa ter "@" e um domínio),
+      o celular também mostra um teclado com o "@" e o "." em destaque.
+    -->
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required />
+
+    <!--
+      type="password": tudo que for digitado aparece como bolinhas/asteriscos na tela,
+      mas o valor real continua sendo o texto digitado (isso NÃO é criptografia).
+    -->
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" name="senha" required />
+
+    <!--
+      type="number" com min/max: o navegador só aceita números dentro do intervalo
+      definido. Tente digitar 200 ou uma letra — o navegador reage sozinho.
+    -->
+    <label for="idade">Idade:</label>
+    <input type="number" id="idade" name="idade" min="18" max="100" />
+
+    <!--
+      type="date": em vez de o usuário digitar a data no formato "certo", o próprio
+      navegador abre um calendário — isso evita erros de digitação como "31/13/2026".
+    -->
+    <label for="nascimento">Data de nascimento:</label>
+    <input type="date" id="nascimento" name="nascimento" />
+
+    <!--
+      type="tel": não valida um formato específico de telefone (números de telefone
+      variam muito entre países), mas no celular já troca o teclado para o numérico.
+    -->
+    <label for="telefone">Telefone:</label>
+    <input type="tel" id="telefone" name="telefone" placeholder="(48) 90000-0000" />
+
+    <button type="submit">Cadastrar</button>
+
+  </form>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 4 — Formulário completo da VaiTorcer (juntando a semana toda)
+  Tópicos: <form>, tipos de campo, radio/checkbox, validação nativa,
+           validação com JavaScript e feedback visual com classList
+
+  O que fazer:
+  1. Tente enviar vazio — o "required" bloqueia (validação nativa).
+  2. Preencha nome e e-mail, mas não marque nenhum pacote — mensagem
+     vermelha específica (validação com JavaScript).
+  3. Preencha tudo corretamente — mensagem verde + resumo do pedido.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 4 — formulário completo</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>Orçamento de pacote — VaiTorcer</h1>
+
+  <form id="form-orcamento">
+
+    <!-- Camada 1: validação NATIVA do HTML — o navegador cuida sozinho -->
+    <label for="nome">Nome completo:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required />
+
+    <h2>Tipo de pacote</h2>
+    <!-- O HTML não tem nenhum atributo para "obrigar" um grupo de radio a ser marcado -->
+    <!-- isso vai ser a CAMADA 2 (validação com JavaScript), lá no script.js             -->
+    <div class="opcao">
+      <input type="radio" id="pacote-economico" name="pacote" value="Econômico" />
+      <label for="pacote-economico">Econômico</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="pacote-conforto" name="pacote" value="Conforto" />
+      <label for="pacote-conforto">Conforto</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="pacote-premium" name="pacote" value="Premium" />
+      <label for="pacote-premium">Premium</label>
+    </div>
+
+    <button type="submit">Solicitar orçamento</button>
+  </form>
+
+  <p id="mensagem"></p>
+  <div id="resumo"></div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 460px;
+  margin: 40px auto;
+  color: #263238;
+}
+
+h1 {
+  font-size: 20px;
+  color: #1b4f72;
+}
+
+h2 {
+  font-size: 15px;
+  color: #1b4f72;
+  margin-top: 18px;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+button {
+  margin-top: 18px;
+  padding: 10px 16px;
+  background: #1b4f72;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Mesmo par de classes do exercício 3, reaproveitado aqui */
+.text-red {
+  color: #c0392b;
+  font-weight: bold;
+  margin-top: 14px;
+}
+
+.text-green {
+  color: #1e8449;
+  font-weight: bold;
+  margin-top: 14px;
+}
+
+#resumo {
+  margin-top: 12px;
+  padding: 12px;
+  background: #eef4f8;
+  border-radius: 6px;
+}

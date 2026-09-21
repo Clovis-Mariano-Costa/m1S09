@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 1 — Escutando o submit e usando preventDefault()
+  Tópico: addEventListener("submit"), evento.preventDefault()
+
+  O que fazer:
+  1. Abra com o Live Server, digite um nome e clique em "Enviar".
+  2. Repare que a página NÃO recarrega mais, e uma mensagem
+     aparece embaixo do botão.
+  3. Abra o DevTools (F12) e veja a aba Console — o mesmo
+     texto também aparece lá.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 1 — submit e preventDefault</title>
+  <link rel="stylesheet" href="style.css" />
+  <!--
+    "defer" avisa o navegador: "carregue este script em segundo plano,
+    mas só execute depois que TODO o HTML acima já existir na página".
+    Sem isso, o script poderia rodar antes de o <form> existir, e
+    document.getElementById("form-contato") voltaria null.
+  -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>Fale com a gente</h1>
+
+  <!-- id="form-contato": é por este id que o script.js vai encontrar o formulário -->
+  <form id="form-contato">
+    <label for="nome">Seu nome:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <button type="submit">Enviar</button>
+  </form>
+
+  <!-- Parágrafo vazio, que o JavaScript vai preencher depois do envio -->
+  <p id="mensagem"></p>
+
+</body>
+</html>

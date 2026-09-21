@@ -1,0 +1,64 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 460px;
+  margin: 40px auto;
+  color: #263238;
+}
+
+h1 {
+  font-size: 20px;
+  color: #1b4f72;
+}
+
+/* A borda e o espaçamento internos de cada <fieldset> */
+fieldset {
+  margin-top: 18px;
+  border: 1px solid #cfd8dc; /* borda cinza clara que desenha o "quadro" ao redor do grupo */
+  border-radius: 6px;
+  padding: 14px;             /* espaço entre a borda e os campos de dentro */
+}
+
+/* O título que fica "encaixado" na borda do fieldset */
+legend {
+  font-weight: bold;
+  color: #1b4f72;
+  padding: 0 6px; /* pequeno respiro nas laterais do texto do título */
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* select e textarea recebem o mesmo visual de campo */
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit; /* usa a mesma fonte do restante da página, em vez da fonte padrão do navegador */
+}
+
+/*
+  :focus é um "estado" do CSS — a regra só se aplica ENQUANTO o
+  campo está selecionado (o usuário clicou ou usou Tab para chegar nele).
+  Aqui usamos "outline" (um contorno) em vez de "border" para não
+  empurrar o resto do layout ao aparecer.
+*/
+select:focus,
+textarea:focus {
+  outline: 2px solid #2a9d8f;
+}
+
+button {
+  margin-top: 18px;
+  padding: 10px 16px;
+  background: #1b4f72;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 1 — Formulário básico
+  Tópico: tag <form>, <label>, <input>, atributo name, botão de envio
+
+  O que fazer:
+  1. Abra este exercício com o Live Server (botão "Go Live" do VS Code).
+  2. Digite seu nome e clique em "Enviar" — ou aperte Enter.
+  3. Repare que a página some por um instante: é o comportamento
+     padrão do formulário. Vamos aprender a controlar isso no
+     próximo encontro (24/09), em script.js.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <!-- <title> é o texto que aparece na aba do navegador -->
+  <title>Exercício 1 — Formulário básico</title>
+  <!-- Aqui conectamos este HTML ao arquivo de estilos style.css -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Cadastro simples</h1>
+
+  <!--
+    A tag <form> é como uma "caixa" que agrupa todos os campos que
+    devem ser enviados juntos. Sem ela, cada <input> seria uma peça
+    solta, sem nenhuma relação entre si.
+  -->
+  <form>
+
+    <!--
+      <label for="nome">: o valor do "for" precisa ser IGUAL ao "id"
+      do campo que ele descreve. É essa igualdade que conecta os dois —
+      não é a proximidade visual na tela, é o valor escrito no código.
+    -->
+    <label for="nome">Nome:</label>
+
+    <!--
+      type="text"  -> aceita qualquer texto digitado
+      id="nome"    -> identifica ESTE campo na página (usado pelo label e, mais adiante, pelo JavaScript)
+      name="nome"  -> identifica o DADO quando o formulário é enviado
+      Repare: id e name têm o mesmo valor aqui só por organização —
+      eles têm papéis diferentes, e podiam ter nomes diferentes.
+    -->
+    <input type="text" id="nome" name="nome" />
+
+    <!-- Mesma lógica do campo acima, agora para o e-mail -->
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" />
+
+    <!--
+      type="submit": ao clicar (ou apertar Enter em qualquer campo do
+      formulário), este botão dispara o ENVIO. É esse envio que, por
+      enquanto, faz a página recarregar — vamos controlar isso na
+      próxima aula com JavaScript.
+    -->
+    <button type="submit">Enviar</button>
+
+  </form>
+
+</body>
+</html>

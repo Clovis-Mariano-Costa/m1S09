@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 4 — select, textarea, fieldset e :focus
+  Tópico: lista suspensa, texto longo, agrupamento de campos e estilo ao clicar no campo
+
+  O que fazer:
+  1. Abra a lista "Cidade-sede" e escolha uma opção.
+  2. Escreva um texto longo no campo de observações.
+  3. Clique dentro de cada campo e observe a borda verde
+     aparecendo — isso é o estilo ":focus" definido em style.css.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 4 — select, textarea e fieldset</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Detalhes da viagem</h1>
+
+  <form>
+
+    <!--
+      <fieldset> desenha uma borda ao redor de campos relacionados.
+      <legend> é o título dessa borda — os dois juntos ajudam o
+      usuário (e quem usa leitor de tela) a entender que esses
+      campos formam um grupo com um propósito em comum.
+    -->
+    <fieldset>
+      <legend>Destino</legend>
+
+      <label for="cidade">Cidade-sede:</label>
+      <select id="cidade" name="cidade">
+        <!-- value="" (vazio): opção inicial, para o usuário perceber que ainda não escolheu nada -->
+        <option value="">Selecione...</option>
+        <!--
+          O TEXTO entre as tags é o que o usuário vê na lista.
+          O VALUE é o que o sistema recebe quando essa opção é escolhida.
+          Repare que "cdmx" (o value) é bem diferente de "Cidade do México" (o texto) —
+          isso é comum quando o sistema usa códigos curtos internamente.
+        -->
+        <option value="cdmx">Cidade do México</option>
+        <option value="ny">Nova York</option>
+        <option value="la">Los Angeles</option>
+        <option value="miami">Miami</option>
+        <option value="toronto">Toronto</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>Observações</legend>
+
+      <label for="observacoes">Alguma informação extra?</label>
+      <!--
+        <textarea> é parecido com <input>, mas permite várias linhas de texto.
+        Repare que ele tem tag de ABERTURA e FECHAMENTO (com conteúdo entre
+        elas), diferente do <input>, que se fecha sozinho com "/>".
+        "rows="4"" define quantas linhas de altura o campo mostra de início
+        (o usuário ainda pode digitar mais do que isso; aparece uma barra de rolagem).
+      -->
+      <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+    </fieldset>
+
+    <button type="submit">Salvar detalhes</button>
+
+  </form>
+
+</body>
+</html>

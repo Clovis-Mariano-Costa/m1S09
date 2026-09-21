@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Da Conversa Solta à Ficha Estruturada — M1S09</title>
+<style>
+  :root{
+    --p:#0d3b66; --s:#2a9d8f; --a:#f4a261; --d:#e76f51;
+    --bg:#f3f6f8; --code:#1e1e1e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);font-family:Arial,Helvetica,sans-serif;color:#263238;line-height:1.6}
+  .wrap{max-width:1000px;margin:auto;background:#fff;min-height:100vh;padding:40px}
+  h1{color:var(--p);border-bottom:4px solid var(--s);padding-bottom:14px;font-size:32px}
+  h1 + p.subtitle{color:#455a64;font-size:17px;margin-top:-6px}
+  h2{color:#fff;background:var(--p);padding:12px 18px;border-radius:6px;margin-top:44px;font-size:20px}
+  h3{color:var(--s);margin-top:26px}
+  .meta{background:#eef4f8;border-left:5px solid var(--p);padding:14px 18px;border-radius:6px;margin:18px 0;font-size:14px}
+  .lead{background:#fff8ec;border:1px solid #f0dca0;border-radius:8px;padding:18px 20px;font-size:15.5px;margin:20px 0}
+  .note{background:#edf8f6;border-left:5px solid var(--s);padding:14px 18px;border-radius:6px;margin:18px 0}
+  .warn{background:#fff3cd;border-left:5px solid var(--a);padding:14px 18px;border-radius:6px;margin:18px 0}
+  .quote{background:#eef4f8;border-left:5px solid var(--p);padding:16px 20px;border-radius:6px;margin:18px 0;font-style:italic;color:#2f4f4f}
+  pre{background:var(--code);color:#f8f8f2;padding:16px 18px;border-radius:8px;overflow:auto;font-size:13.5px;line-height:1.5}
+  code{font-family:Consolas,Menlo,monospace}
+  :not(pre) > code{background:#eef4f8;color:var(--p);padding:2px 6px;border-radius:4px;font-size:13px}
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
+  th{background:var(--p);color:#fff;text-align:left;padding:10px 12px}
+  td{padding:10px 12px;border-bottom:1px solid #e3e9ec;vertical-align:top}
+  tr:nth-child(even) td{background:#f7fafb}
+  .tag{display:inline-block;background:var(--p);color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;margin-right:6px}
+  .bodymap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+  .bodymap .card{border:2px solid #dfe5e8;border-radius:10px;padding:16px 14px;text-align:center;background:#fafcfd}
+  .bodymap .card .num{width:30px;height:30px;border-radius:50%;background:var(--p);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:bold}
+  .bodymap .card h4{margin:6px 0 4px;color:var(--p)}
+  .bodymap .card.c1 .num{background:#6d4c41}
+  .bodymap .card.c2 .num{background:var(--d)}
+  .bodymap .card.c3 .num{background:var(--s)}
+  .bodymap .card.c4 .num{background:#f2b705;color:#1e1e1e}
+  .diagram{background:var(--code);color:#a6e3a1;border-radius:8px;padding:20px;font-family:Consolas,Menlo,monospace;font-size:13px;overflow:auto;white-space:pre;line-height:1.5}
+  .checklist li{margin-bottom:8px}
+  .checklist b{color:var(--p)}
+  nav{position:sticky;top:0;background:#fff;padding:12px 0;border-bottom:1px solid #ddd;margin-bottom:10px;font-size:14px}
+  nav a{margin-right:16px;color:var(--p);font-weight:bold;text-decoration:none}
+  nav a:hover{text-decoration:underline}
+  footer{margin-top:50px;padding-top:20px;border-top:1px solid #e3e9ec;color:#78909c;font-size:13px;text-align:center}
+  @media print{
+    nav{display:none}
+    .wrap{padding:0}
+    h2{break-before:page}
+  }
+  @media (max-width:700px){
+    .bodymap{grid-template-columns:1fr 1fr}
+    .wrap{padding:20px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <a href="#recap">1. O que já sabem</a>
+    <a href="#muda">2. O que muda</a>
+    <a href="#corpo">3. Analogia</a>
+    <a href="#tabela">4. Tabela de conexão</a>
+    <a href="#exemplo">5. Exemplo</a>
+    <a href="#roteiro">6. Roteiro</a>
+    <a href="#erros">7. Erros de mentalidade</a>
+    <a href="#checklist">8. Checklist</a>
+    <a href="#mapa">9. Mapa-resumo</a>
+  </nav>
+
+  <h1>Da Conversa Solta à Ficha Estruturada</h1>
+  <p class="subtitle">Conectando DOM e Eventos (Semana 08) com Formulários HTML e integração JS (Semana 09)</p>
+
+  <div class="meta">
+    <strong>Turma:</strong> Desenvolvimento Front-End [React] T4 &nbsp;|&nbsp; <strong>Módulo:</strong> 1 &nbsp;|&nbsp; <strong>Semana:</strong> 9<br>
+    <strong>Professor:</strong> Lisandro Faria Pinheiro &nbsp;|&nbsp;
+    Baseado no conteúdo efetivo do slide e do Guia do Professor da M1S08 (DOM, manipulação e eventos)
+  </div>
+
+  <div class="lead">
+    Este documento não ensina conteúdo novo — ele existe para um único objetivo: <strong>mostrar ao
+    aluno que ele não está começando do zero.</strong> Tudo que foi aprendido na Semana 08 (selecionar
+    elementos, escutar eventos, capturar valores, criar e remover itens do DOM) é a base direta do que
+    será visto na Semana 09 (formulários HTML e a integração deles com JavaScript). O aluno já sabe
+    escutar um clique — agora vai aprender a escutar um formulário inteiro.
+  </div>
+
+  <h2 id="recap">1. O que vocês já sabem (recapitulando a Semana 08)</h2>
+  <p>Na semana passada, "JavaScript básico com HTML e CSS: DOM, manipulação e eventos", vocês deram
+  vida à página: encontraram elementos, alteraram conteúdo e estilo, criaram e removeram itens, e
+  aprenderam a reagir a ações do usuário.</p>
+  <ul>
+    <li><strong>Seleção de elementos</strong> — <code>getElementById</code>, <code>querySelector</code>, <code>querySelectorAll</code>, e o cuidado com o retorno <code>null</code>.</li>
+    <li><strong>Leitura e alteração de conteúdo</strong> — <code>textContent</code> e <code>innerHTML</code>, e quando cada um é seguro de usar.</li>
+    <li><strong>Estilo e classes</strong> — <code>style</code> (camelCase) e, principalmente, <code>classList.add</code>/<code>remove</code>/<code>toggle</code>.</li>
+    <li><strong>Criação e remoção</strong> — <code>createElement</code>, <code>appendChild</code>, <code>remove</code>, <code>removeChild</code>.</li>
+    <li><strong><code>addEventListener</code></strong> — escutar cliques, duplo clique, mouse e teclado (<code>keydown</code>, <code>keyup</code>, <code>event.key</code>).</li>
+    <li><strong>Captura de valores</strong> — ler <code>input.value</code> dentro de um evento, sabendo que o retorno é sempre uma string.</li>
+  </ul>
+
+  <p>Se vocês conseguem escrever isto...</p>
+  <pre><code>const campo = document.getElementById("nome")
+const botao = document.getElementById("btn")
+
+botao.addEventListener("click", () => {
+  console.log(campo.value)
+})</code></pre>
+  <p>...então vocês <strong>já sabem</strong> exatamente o que precisam para escutar um formulário inteiro
+  e capturar todos os seus campos. A diferença desta semana não é uma técnica nova de captura — é a
+  <strong>estrutura</strong> que organiza os campos (<code>&lt;form&gt;</code>) e o <strong>evento certo</strong>
+  para reagir a um envio completo (<code>submit</code>, em vez de <code>click</code> em um botão solto).</p>
+
+  <h2 id="muda">2. O que muda a partir de agora</h2>
+  <p>Na semana passada, cada campo era tratado <strong>sozinho</strong>: um <code>&lt;input&gt;</code> aqui,
+  um botão ali, cada um com seu próprio <code>addEventListener</code>. Funcionava, mas exigia repetir
+  lógica para cada campo e não tinha nenhum comportamento nativo de "envio".</p>
+  <p>A partir desta semana, os campos passam a viver dentro de um <strong>formulário</strong>
+  (<code>&lt;form&gt;</code>): uma estrutura que o próprio HTML entende como "um conjunto de dados que
+  será enviado junto". Isso destrava recursos prontos do navegador — envio pela tecla Enter, validação
+  nativa com <code>required</code> — e dá ao JavaScript um único evento (<code>submit</code>) para
+  capturar tudo de uma vez.</p>
+
+  <div class="note">
+    <strong>A ideia central desta semana, em uma frase:</strong> o formulário é o "elemento" que vocês já
+    sabem selecionar e escutar com <code>addEventListener</code> — só que, em vez de reagir a um clique,
+    ele reage ao envio de <em>todos os seus campos ao mesmo tempo</em>. E antes de deixar esses dados
+    seguirem adiante, aprendemos a <strong>validar</strong> — com o HTML sozinho e com JavaScript.
+  </div>
+
+  <h2 id="corpo">3. A analogia central: da conversa solta à ficha de inscrição</h2>
+  <p>Para fixar essa conexão, use a analogia de um <strong>estande de credenciamento na Copa do Mundo</strong>
+  — o mesmo contexto que os slides desta semana já usam.</p>
+
+  <div class="bodymap">
+    <div class="card c1">
+      <div class="num">1</div>
+      <h4>Semana 08</h4>
+      <p>Um atendente solto pergunta o nome, anota, pergunta o e-mail, anota — cada resposta tratada na hora, sem ficha.</p>
+    </div>
+    <div class="card c2">
+      <div class="num">2</div>
+      <h4>Semana 09 (HTML)</h4>
+      <p>Agora existe uma <strong>ficha de inscrição</strong> (<code>&lt;form&gt;</code>): todos os campos organizados, cada um com o tipo certo.</p>
+    </div>
+    <div class="card c3">
+      <div class="num">3</div>
+      <h4>Semana 09 (JS)</h4>
+      <p>O atendente só olha a ficha <strong>quando ela é entregue por completo</strong> (evento <code>submit</code>), não campo a campo.</p>
+    </div>
+    <div class="card c4">
+      <div class="num">4</div>
+      <h4>Semana 09 (validação)</h4>
+      <p>Antes de aceitar, o atendente confere se está tudo certo — parte a régua do próprio formulário, parte o bom senso (JavaScript).</p>
+    </div>
+  </div>
+
+  <p>Na Semana 08, o "atendente" (JavaScript) já sabia ouvir e reagir — só não tinha uma ficha
+  organizada para trabalhar, e reagia a cada campo isoladamente. Nesta semana, ele ganha a ficha
+  (<code>&lt;form&gt;</code>) e aprende a esperar a entrega completa antes de agir.</p>
+
+  <div class="warn">
+    <strong>Importante:</strong> o <code>&lt;form&gt;</code> não é uma tecnologia nova e separada do DOM.
+    É <strong>o mesmo HTML e o mesmo <code>addEventListener</code></strong> que vocês já usam — só que
+    aplicado a um elemento que agrupa vários campos, escutando um evento diferente (<code>submit</code>
+    em vez de <code>click</code>).
+  </div>
+
+  <h2 id="tabela">4. Tabela de conexão direta: o que muda de nome, o que continua igual</h2>
+  <p>Compare, linha a linha, algo que vocês já fizeram na Semana 08 com a forma equivalente, aplicada a
+  formulários, na Semana 09.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Semana 08 (DOM/Eventos) — o que vocês já sabem</th>
+        <th>Semana 09 (Formulários) — a mesma ideia, aplicada a um &lt;form&gt;</th>
+        <th>O que realmente mudou</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>botao.addEventListener("click", ...)</code></td>
+        <td><code>formulario.addEventListener("submit", (evento) =&gt; {...})</code></td>
+        <td>Mesmo método, evento mais apropriado — captura o envio completo, inclusive pela tecla Enter</td>
+      </tr>
+      <tr>
+        <td><code>campo.value</code> lido dentro de um clique</td>
+        <td><code>campo.value</code> lido dentro do <code>submit</code>, para cada campo do formulário</td>
+        <td>Mesma propriedade; agora lida de vários campos organizados, não de um campo solto</td>
+      </tr>
+      <tr>
+        <td>Não havia um jeito nativo de barrar um envio vazio</td>
+        <td>Atributo <code>required</code> no HTML bloqueia o envio sozinho</td>
+        <td><strong>Novidade real:</strong> validação nativa do navegador, sem nenhuma linha de JS</td>
+      </tr>
+      <tr>
+        <td><code>elemento.classList.add("text-red")</code> / <code>.remove("text-green")</code></td>
+        <td>As mesmas classes, agora usadas para indicar campo válido/inválido no formulário</td>
+        <td>Mesma API do <code>classList</code>; novo caso de uso (feedback de validação)</td>
+      </tr>
+      <tr>
+        <td><code>elemento.innerHTML = "..."</code> para exibir algo montado dinamicamente</td>
+        <td>Mesmo <code>innerHTML</code>, usado para exibir o resumo dos dados enviados no formulário</td>
+        <td>Nada muda na sintaxe — muda a origem dos dados (agora vêm de vários campos de um <code>&lt;form&gt;</code>)</td>
+      </tr>
+      <tr>
+        <td><code>createElement</code> + <code>appendChild</code> para montar uma lista</td>
+        <td>As mesmas duas funções, para montar a lista de "extras" marcados em checkboxes</td>
+        <td>Mesma técnica; novo dado de origem (<code>.checked</code> de vários checkboxes)</td>
+      </tr>
+      <tr>
+        <td>Um <code>&lt;input&gt;</code> solto, sem tipo definido (<code>type="text"</code> para tudo)</td>
+        <td><code>type="email"</code>, <code>type="number"</code>, <code>type="date"</code>, <code>checkbox</code>, <code>radio</code>, <code>select</code></td>
+        <td><strong>Novidade real:</strong> o HTML já sabe pedir e validar o formato certo de cada dado</td>
+      </tr>
+      <tr>
+        <td>Não existia conexão formal entre um texto e um campo</td>
+        <td><code>&lt;label for="id"&gt;</code> conectado ao <code>id</code> do campo</td>
+        <td><strong>Novidade real:</strong> acessibilidade — leitor de tela e clique no rótulo passam a funcionar</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Conclusão prática desta tabela:</strong> a maior parte da "sintaxe nova" desta semana não é
+  conhecimento novo de JavaScript — é o <strong>mesmo <code>addEventListener</code>, o mesmo <code>.value</code>,
+  o mesmo <code>classList</code> da Semana 08</strong>, agora aplicados dentro de um <code>&lt;form&gt;</code>.
+  O que é genuinamente novo é a estrutura do formulário, os tipos de campo e a validação nativa do HTML.</p>
+
+  <h2 id="exemplo">5. Exemplo prático: o mesmo projeto, um passo além</h2>
+  <p>Imagine que, na Semana 08, um aluno entregou este código para capturar um nome digitado:</p>
+  <pre><code>&lt;input type="text" id="nome" placeholder="Digite seu nome"&gt;
+&lt;button id="btn"&gt;Mostrar&lt;/button&gt;
+&lt;p id="saida"&gt;&lt;/p&gt;
+
+const nome = document.getElementById("nome")
+const btn = document.getElementById("btn")
+const saida = document.getElementById("saida")
+
+btn.addEventListener("click", () =&gt; {
+  saida.textContent = "Olá, " + nome.value
+})</code></pre>
+  <p>Funciona — mas se pressionar Enter, nada acontece; e se houvesse mais campos (e-mail, telefone),
+  cada um precisaria do seu próprio tratamento.</p>
+
+  <p>Agora, com o mesmo conhecimento de <code>addEventListener</code> e <code>.value</code>, aplicado a
+  um <code>&lt;form&gt;</code>:</p>
+  <pre><code>&lt;!-- 1) Os campos agora vivem dentro de um &lt;form&gt; (a novidade estrutural) --&gt;
+&lt;form id="form-saudacao"&gt;
+  &lt;label for="nome"&gt;Nome:&lt;/label&gt;
+  &lt;input type="text" id="nome" name="nome" required&gt;
+  &lt;button type="submit"&gt;Mostrar&lt;/button&gt;
+&lt;/form&gt;
+&lt;p id="saida"&gt;&lt;/p&gt;
+
+// 2) Escutamos o FORMULÁRIO inteiro, não mais o botão isolado
+const formulario = document.getElementById("form-saudacao")
+const saida = document.getElementById("saida")
+
+formulario.addEventListener("submit", (evento) =&gt; {
+  // 3) A novidade de sintaxe: impedir o recarregamento padrão da página
+  evento.preventDefault()
+
+  // 4) O resto é EXATAMENTE o que vocês já sabiam fazer na Semana 08
+  const nome = document.getElementById("nome")
+  saida.textContent = "Olá, " + nome.value
+})</code></pre>
+  <p>Agora o Enter também funciona, o <code>required</code> impede o envio vazio sem nenhuma linha extra
+  de JavaScript, e o mesmo padrão escala para quantos campos o formulário tiver.</p>
+
+  <h2 id="roteiro">6. Roteiro sugerido para abrir o Encontro 1 (22/09)</h2>
+  <p>Sugestão de fala para os primeiros minutos da aula, retomando a semana anterior antes de introduzir
+  a tag <code>&lt;form&gt;</code>:</p>
+  <div class="quote">
+    "Na semana passada vocês aprenderam a fazer a página escutar um clique e reagir. Levantem a mão
+    quem usou <code>addEventListener</code>... quem leu um <code>.value</code>... quem usou
+    <code>classList.add</code> ou <code>remove</code>. Ótimo — vocês já sabem tudo isso. A única coisa que
+    muda hoje é que, em vez de um campo solto e um botão solto, vamos organizar tudo dentro de uma tag
+    chamada <code>&lt;form&gt;</code>, e vamos escutar um evento novo: o envio completo do formulário.
+    É a mesma lógica de sempre, só que aplicada a uma ficha inteira em vez de a um campo por vez."
+  </div>
+  <p>Depois dessa fala, siga com o Bloco 1 do Guia do Professor desta semana (por que formulários existem).</p>
+
+  <h2 id="erros">7. Erros de mentalidade para evitar</h2>
+  <ul>
+    <li><strong>"Agora preciso aprender addEventListener de novo, para formulários."</strong> Não. É o
+      mesmo método da Semana 08 — muda apenas o nome do evento escutado (<code>submit</code> em vez de
+      <code>click</code>) e o elemento escutado (o <code>&lt;form&gt;</code> inteiro).</li>
+    <li><strong>"Capturar dados de um formulário é diferente de capturar um input solto."</strong> Não é.
+      Continua sendo <code>.value</code> para texto e <code>select</code>; o que muda é <code>.checked</code>
+      para checkbox e o seletor <code>:checked</code> para radio — extensões pontuais, não uma técnica nova.</li>
+    <li><strong>"required no HTML e validação em JavaScript fazem a mesma coisa, então é redundante
+      usar os dois."</strong> Não são redundantes: o <code>required</code> cobre o básico sozinho; o
+      JavaScript cobre regras que o HTML não conhece (tamanho mínimo de senha, opção obrigatória num
+      grupo). Repetir a mesma regra nos dois lugares é que seria redundante.</li>
+    <li><strong>"classList e innerHTML da Semana 08 não servem mais para formulários."</strong> Ao
+      contrário: são exatamente as ferramentas usadas para dar feedback visual de validação e para
+      montar o resumo dos dados enviados.</li>
+  </ul>
+
+  <h2 id="checklist">8. Checklist mental antes de começar a Semana 09</h2>
+  <p>Antes de cada novo conceito desta semana, pergunte: <strong>"isso já existia no DOM/eventos da
+  semana passada, ou é realmente novo?"</strong></p>
+  <ul class="checklist">
+    <li><code>addEventListener</code>, <code>.value</code>, <code>classList</code>, <code>innerHTML</code>, <code>createElement</code>/<code>appendChild</code> → <b>já existia</b> (Semana 08). Só ganham um novo contexto de uso: formulários.</li>
+    <li>A tag <code>&lt;form&gt;</code>, o evento <code>submit</code> e <code>evento.preventDefault()</code> → <b>isto sim é novo.</b> É a peça estrutural que faltava para organizar vários campos num único envio.</li>
+    <li>Tipos de <code>input</code> (<code>email</code>, <code>number</code>, <code>date</code>, <code>tel</code>), <code>checkbox</code>, <code>radio</code>, <code>select</code>, <code>&lt;label for&gt;</code> → <b>novo</b>, mas é HTML puro — nenhuma linha de JavaScript envolvida.</li>
+    <li>Validação nativa (<code>required</code>, <code>type</code>, <code>min</code>/<code>max</code>) → <b>novo</b> conceito, mas reaproveita os mesmos atributos HTML que vocês já escrevem.</li>
+    <li>Validação com JavaScript e feedback visual → <b>combina</b> o <code>if</code>/<code>return</code> (lógica que vocês já escrevem) com o <code>classList</code> da Semana 08.</li>
+  </ul>
+
+  <h2 id="mapa">9. Mapa-resumo da conexão</h2>
+  <div class="diagram">SEMANA 08                                SEMANA 09
+----------                                ----------
+addEventListener("click", ...)   ---->   addEventListener("submit", ...)
+  no botão solto                           no &lt;form&gt; inteiro
+
+campo.value dentro do clique      ---->   campo.value / .checked / :checked
+                                           dentro do submit, para cada campo
+
+classList.add/remove              ---->   as MESMAS classes, agora indicando
+  (mostrar/esconder, tema)                 campo válido ou inválido
+
+createElement + appendChild       ---->   os MESMOS métodos, montando o
+  (lista de tarefas)                       resumo dos dados do formulário
+
+                                          + &lt;form&gt;, &lt;label for&gt;, tipos de input
+                                            (as peças novas: estrutura e HTML)
+
+                                          + evento.preventDefault() + required
+                                            (a peça nova: controlar o envio e
+                                             validar antes de aceitar os dados)</div>
+
+  <div class="lead">
+    <strong>Resultado:</strong> a página que já sabia reagir a um clique isolado passa a saber receber,
+    conferir e responder a uma ficha inteira de dados — do jeito que qualquer sistema profissional faz.
+  </div>
+
+  <footer>
+    Desenvolvimento Front-End [React] T4 — SENAI/SC — Módulo 1, Semana 9<br>
+    Professor Lisandro Faria Pinheiro
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 1 — Validação nativa do HTML
+  Tópico: required, type="email", min/max — o navegador valida sozinho, sem JavaScript
+
+  O que fazer:
+  1. Tente enviar o formulário vazio — o navegador bloqueia e avisa.
+  2. Digite um e-mail sem "@" — o navegador também bloqueia.
+  3. Digite uma quantidade fora de 1 a 10 — o navegador bloqueia de novo.
+  4. Repare: não existe NENHUM arquivo script.js neste exercício —
+     tudo isso acontece só com atributos do HTML.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 1 — validação nativa</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Pedido de camisas oficiais</h1>
+
+  <form>
+
+    <!-- required: se este campo estiver vazio, o navegador NEM TENTA enviar o formulário -->
+    <label for="nome">Nome completo:</label>
+    <input type="text" id="nome" name="nome" required />
+
+    <!-- type="email" + required: exige um formato de e-mail válido E que o campo não esteja vazio -->
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required />
+
+    <!-- type="number" com min/max: o navegador rejeita valores fora do intervalo de 1 a 10 -->
+    <label for="quantidade">Quantidade de camisas (1 a 10):</label>
+    <input type="number" id="quantidade" name="quantidade" min="1" max="10" required />
+
+    <button type="submit">Fazer pedido</button>
+
+  </form>
+
+</body>
+</html>

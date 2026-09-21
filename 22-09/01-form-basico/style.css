@@ -1,0 +1,40 @@
+/* Estilo da página inteira */
+body {
+  font-family: Arial, sans-serif; /* fonte usada em todo o texto */
+  max-width: 420px;               /* a página não fica mais larga que 420px, mesmo em telas grandes */
+  margin: 40px auto;              /* 40px de espaço em cima/embaixo; "auto" centraliza na horizontal */
+  color: #263238;                 /* cor do texto (cinza escuro) */
+}
+
+/* Título principal da página */
+h1 {
+  font-size: 20px;
+  color: #1b4f72; /* azul usado em todos os materiais da semana */
+}
+
+/* Cada <label> vira um bloco próprio, com um espaço antes dele */
+label {
+  display: block;     /* "block" faz o label ocupar a própria linha, como um parágrafo */
+  margin-top: 14px;   /* espaço entre o campo anterior e este label */
+  font-weight: bold;  /* deixa o texto do rótulo em negrito */
+}
+
+/* Todo <input> da página recebe este mesmo visual */
+input {
+  width: 100%;              /* ocupa toda a largura disponível */
+  padding: 8px;             /* espaço interno, entre a borda e o texto digitado */
+  margin-top: 4px;          /* pequeno espaço entre o label e o campo */
+  border: 1px solid #ccc;   /* borda cinza clara */
+  border-radius: 4px;       /* deixa as pontas da borda arredondadas */
+}
+
+/* Botão de envio do formulário */
+button {
+  margin-top: 18px;
+  padding: 10px 16px;       /* espaço interno: 10px em cima/embaixo, 16px nos lados */
+  background: #1b4f72;      /* cor de fundo do botão */
+  color: #fff;               /* cor do texto (branco), para contrastar com o fundo azul */
+  border: none;              /* remove a borda padrão do navegador */
+  border-radius: 4px;
+  cursor: pointer;           /* faz o mouse virar uma "mãozinha" ao passar por cima — indica que é clicável */
+}

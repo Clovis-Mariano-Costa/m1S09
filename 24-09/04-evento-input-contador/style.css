@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 420px;
+  margin: 40px auto;
+  color: #263238;
+}
+
+h1 {
+  font-size: 20px;
+  color: #1b4f72;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  font-weight: bold;
+}
+
+textarea,
+select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+/* Textos pequenos de apoio, escritos pelo script.js */
+#contador,
+#avisoCidade {
+  font-size: 13px;
+  color: #607d8b;
+  margin-top: 4px;
+}

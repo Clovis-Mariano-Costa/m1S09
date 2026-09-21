@@ -1,0 +1,41 @@
+/* Estilo da página inteira */
+body {
+  font-family: Arial, sans-serif;
+  max-width: 420px;
+  margin: 40px auto; /* centraliza a página na horizontal */
+  color: #263238;
+}
+
+h1 {
+  font-size: 20px;
+  color: #1b4f72;
+}
+
+/* Título de cada grupo de opções ("Tipo de pacote", "Extras") */
+h2 {
+  font-size: 15px;
+  color: #1b4f72;
+  margin-top: 24px; /* espaço extra antes de cada novo grupo */
+}
+
+/*
+  .opcao é a <div> que envolve cada input + label.
+  Usamos display: flex para colocar o quadradinho (input) e o
+  texto (label) lado a lado, alinhados verticalmente no centro.
+*/
+.opcao {
+  display: flex;
+  align-items: center; /* alinha input e texto no centro vertical */
+  gap: 8px;             /* espaço entre o input e o label */
+  margin-top: 8px;      /* espaço entre uma opção e a próxima */
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 16px;
+  background: #1b4f72;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

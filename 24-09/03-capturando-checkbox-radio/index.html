@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 3 — Capturando checkbox e radio
+  Tópico: .checked (checkbox) e document.querySelector('input[name="x"]:checked') (radio)
+
+  O que fazer:
+  1. Escolha um tipo de pacote (radio) e marque alguns extras (checkbox).
+  2. Clique em "Solicitar orçamento" e veja o resumo montado na página.
+  3. Tente enviar sem marcar nenhum pacote — repare na mensagem de aviso.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 3 — checkbox e radio</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>Orçamento de pacote — VaiTorcer</h1>
+
+  <form id="form-orcamento">
+
+    <h2>Tipo de pacote</h2>
+    <!-- Os três radios compartilham name="pacote": só um pode ficar marcado -->
+    <div class="opcao">
+      <input type="radio" id="pacote-economico" name="pacote" value="Econômico" />
+      <label for="pacote-economico">Econômico</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="pacote-conforto" name="pacote" value="Conforto" />
+      <label for="pacote-conforto">Conforto</label>
+    </div>
+    <div class="opcao">
+      <input type="radio" id="pacote-premium" name="pacote" value="Premium" />
+      <label for="pacote-premium">Premium</label>
+    </div>
+
+    <h2>Extras</h2>
+    <!--
+      Cada checkbox tem só um "id" — não precisamos de "name" aqui
+      porque vamos capturar cada um SEPARADAMENTE pelo id no script.js,
+      e não como um grupo.
+    -->
+    <div class="opcao">
+      <input type="checkbox" id="ingresso" />
+      <label for="ingresso">Ingresso para o jogo</label>
+    </div>
+    <div class="opcao">
+      <input type="checkbox" id="seguro" />
+      <label for="seguro">Seguro viagem</label>
+    </div>
+    <div class="opcao">
+      <input type="checkbox" id="traslado" />
+      <label for="traslado">Traslado do aeroporto</label>
+    </div>
+
+    <button type="submit">Solicitar orçamento</button>
+  </form>
+
+  <div id="resumo"></div>
+
+</body>
+</html>
