@@ -1,0 +1,107 @@
+/*
+  BÔNUS: clima de torcida — verde e amarelo na identidade da VaiTorcer.
+  Trocamos o azul das páginas anteriores por um verde principal (título,
+  bordas, foco) e um amarelo de destaque (botão), lembrando a torcida.
+*/
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 460px;
+  margin: 40px auto;
+  color: #263238;
+}
+
+h1 {
+  font-size: 22px;
+  color: #1b5e20; /* verde escuro */
+  margin-bottom: 4px;
+}
+
+.subtitulo {
+  margin-top: 0;
+  color: #558b2f;
+  font-size: 14px;
+}
+
+/* A borda e o espaçamento internos de cada <fieldset> */
+fieldset {
+  margin-top: 18px;
+  border: 1px solid #a5d6a7; /* verde claro, no lugar do cinza das páginas anteriores */
+  border-radius: 6px;
+  padding: 14px;
+}
+
+/* O título que fica "encaixado" na borda do fieldset */
+legend {
+  font-weight: bold;
+  color: #1b5e20;
+  padding: 0 6px;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+/* Título de cada subgrupo dentro do fieldset "Pacote" (radio / checkbox) */
+.rotulo-grupo {
+  font-weight: bold;
+  margin: 16px 0 0;
+}
+
+/* * vermelho ao lado dos campos obrigatórios, para o aluno enxergar
+   de cara quais labels têm "required" no input correspondente */
+.obrigatorio {
+  color: #c62828;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* :focus só se aplica ENQUANTO o campo está selecionado */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #fbc02d; /* amarelo, para reforçar a identidade da agência */
+}
+
+/* .opcao é a <div> que envolve cada radio/checkbox + label */
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.opcao label {
+  margin-top: 0;
+  font-weight: normal;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: #fbc02d; /* amarelo */
+  color: #1b5e20;      /* texto verde escuro, para contraste sobre o amarelo */
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f9a825;
+}

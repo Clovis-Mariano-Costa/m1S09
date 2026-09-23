@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 5 — Exercício de aula: formulário de orçamento (revisão)
+  Cenário: a agência VaiTorcer vende pacotes de viagem para as
+  cidades-sede da Copa do Mundo 2026 e precisa de uma página de
+  orçamento no site para parar de perder clientes no e-mail.
+
+  Este exercício reúne o que foi visto em 01, 02, 03 e 04:
+  - tipos de campo corretos + required (exercício 02)
+  - checkbox x radio (exercício 03)
+  - select, textarea, fieldset/legend (exercício 04)
+
+  O que fazer:
+  1. Abra com o Live Server e preencha o formulário inteiro.
+  2. Clique em "Solicitar orçamento" deixando um campo obrigatório
+     vazio — repare que o navegador aponta exatamente qual campo falta,
+     sem nenhum JavaScript.
+  3. Marque mais de um "extra" e depois tente marcar mais de um
+     "tipo de pacote" — compare o comportamento dos dois.
+  4. Repare que cada seção do formulário está dentro de um
+     <fieldset> com <legend> — isso organiza visualmente o que, para
+     o navegador, é apenas uma lista de campos soltos.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 5 — Orçamento de pacote VaiTorcer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>VaiTorcer — Orçamento de pacote</h1>
+  <p class="subtitulo">Preencha os dados e receba seu orçamento para a Copa do Mundo 2026.</p>
+
+  <form>
+
+    <fieldset>
+      <legend>Seus dados</legend>
+
+      <label for="nome">Nome completo: <span class="obrigatorio">*</span></label>
+      <input type="text" id="nome" name="nome" placeholder="ex: Maria Silva" required />
+
+      <!-- type="email" já valida o formato (precisa de "@" e domínio) sozinho -->
+      <label for="email">E-mail: <span class="obrigatorio">*</span></label>
+      <input type="email" id="email" name="email" placeholder="ex: maria@email.com" required />
+
+      <!-- type="tel" não valida um formato fixo, mas troca o teclado do celular para numérico -->
+      <label for="telefone">Telefone: <span class="obrigatorio">*</span></label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(48) 90000-0000" required />
+    </fieldset>
+
+    <fieldset>
+      <legend>Destino e datas</legend>
+
+      <label for="cidade">Cidade-sede: <span class="obrigatorio">*</span></label>
+      <select id="cidade" name="cidade" required>
+        <option value="">Selecione...</option>
+        <option value="cdmx">Cidade do México</option>
+        <option value="ny">Nova York</option>
+        <option value="la">Los Angeles</option>
+        <option value="miami">Miami</option>
+        <option value="toronto">Toronto</option>
+      </select>
+
+      <!-- type="date" abre um calendário no navegador, evitando datas digitadas errado -->
+      <label for="data-ida">Data de ida: <span class="obrigatorio">*</span></label>
+      <input type="date" id="data-ida" name="data-ida" required />
+
+      <label for="data-volta">Data de volta: <span class="obrigatorio">*</span></label>
+      <input type="date" id="data-volta" name="data-volta" required />
+    </fieldset>
+
+    <fieldset>
+      <legend>Pacote</legend>
+
+      <p class="rotulo-grupo">Tipo de pacote (escolha só um): <span class="obrigatorio">*</span></p>
+
+      <!--
+        Os três radios têm o mesmo "name" (pacote), por isso marcar um
+        desmarca os outros automaticamente. Basta o "required" estar em
+        um deles para o navegador exigir que pelo menos um seja marcado.
+      -->
+      <div class="opcao">
+        <input type="radio" id="pacote-economico" name="pacote" value="economico" required />
+        <label for="pacote-economico">Econômico</label>
+      </div>
+      <div class="opcao">
+        <input type="radio" id="pacote-conforto" name="pacote" value="conforto" />
+        <label for="pacote-conforto">Conforto</label>
+      </div>
+      <div class="opcao">
+        <input type="radio" id="pacote-premium" name="pacote" value="premium" />
+        <label for="pacote-premium">Premium</label>
+      </div>
+
+      <p class="rotulo-grupo">Extras (pode marcar vários):</p>
+
+      <!-- Cada checkbox é independente — nenhum precisa de "name" compartilhado -->
+      <div class="opcao">
+        <input type="checkbox" id="ingresso" name="ingresso" value="sim" />
+        <label for="ingresso">Ingresso para o jogo</label>
+      </div>
+      <div class="opcao">
+        <input type="checkbox" id="seguro" name="seguro" value="sim" />
+        <label for="seguro">Seguro viagem</label>
+      </div>
+      <div class="opcao">
+        <input type="checkbox" id="traslado" name="traslado" value="sim" />
+        <label for="traslado">Traslado do aeroporto</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Observações</legend>
+
+      <label for="observacoes">Alguma informação extra?</label>
+      <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+    </fieldset>
+
+    <button type="submit">Solicitar orçamento</button>
+
+  </form>
+
+</body>
+</html>
