@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+  EXERCÍCIO 5 — Exercício de aula: resumo do pacote antes de enviar
+  Cenário: os primeiros orçamentos da VaiTorcer chegaram com erros de
+  digitação, e a equipe de atendimento pediu uma melhoria: o cliente
+  precisa CONFERIR o resumo do pacote na própria página antes de enviar.
+
+  Este exercício retoma o formulário completo do dia 22/09 (exercício 05)
+  e aplica o que vimos hoje sobre JavaScript em formulários:
+  - submit + preventDefault()                  (exercício 01)
+  - .value para texto, e-mail, select e date    (exercício 02)
+  - .checked / :checked para checkbox e radio   (exercício 03)
+
+  O que fazer:
+  1. Preencha o formulário inteiro e clique em "Solicitar orçamento".
+  2. Repare que a página NÃO recarrega, e um resumo aparece embaixo
+     com tudo que você digitou e marcou.
+  3. Marque dois ou três "extras" e reenvie — veja a lista sendo
+     remontada no resumo.
+  4. Agora desmarque TODOS os extras e reenvie de novo — repare na
+     mensagem "Nenhum extra selecionado" (bônus).
+  5. Tente enviar com um campo obrigatório vazio — o navegador ainda
+     bloqueia sozinho (validação nativa), antes mesmo do nosso
+     JavaScript rodar.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercício 5 — Resumo do pacote VaiTorcer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <h1>VaiTorcer — Orçamento de pacote</h1>
+  <p class="subtitulo">Preencha os dados e confira o resumo antes de enviar.</p>
+
+  <form id="form-orcamento">
+
+    <fieldset>
+      <legend>Seus dados</legend>
+
+      <label for="nome">Nome completo: <span class="obrigatorio">*</span></label>
+      <input type="text" id="nome" name="nome" placeholder="ex: Maria Silva" required />
+
+      <label for="email">E-mail: <span class="obrigatorio">*</span></label>
+      <input type="email" id="email" name="email" placeholder="ex: maria@email.com" required />
+
+      <label for="telefone">Telefone: <span class="obrigatorio">*</span></label>
+      <input type="tel" id="telefone" name="telefone" placeholder="(48) 90000-0000" required />
+    </fieldset>
+
+    <fieldset>
+      <legend>Destino e datas</legend>
+
+      <label for="cidade">Cidade-sede: <span class="obrigatorio">*</span></label>
+      <select id="cidade" name="cidade" required>
+        <option value="">Selecione...</option>
+        <option value="Cidade do México">Cidade do México</option>
+        <option value="Nova York">Nova York</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Miami">Miami</option>
+        <option value="Toronto">Toronto</option>
+      </select>
+
+      <label for="data-ida">Data de ida: <span class="obrigatorio">*</span></label>
+      <input type="date" id="data-ida" name="data-ida" required />
+
+      <label for="data-volta">Data de volta: <span class="obrigatorio">*</span></label>
+      <input type="date" id="data-volta" name="data-volta" required />
+    </fieldset>
+
+    <fieldset>
+      <legend>Pacote</legend>
+
+      <p class="rotulo-grupo">Tipo de pacote (escolha só um): <span class="obrigatorio">*</span></p>
+
+      <!--
+        Os três radios compartilham name="pacote", por isso marcar um
+        desmarca os outros automaticamente. Basta o "required" estar em
+        um deles para o navegador exigir que pelo menos um seja marcado.
+      -->
+      <div class="opcao">
+        <input type="radio" id="pacote-economico" name="pacote" value="Econômico" required />
+        <label for="pacote-economico">Econômico</label>
+      </div>
+      <div class="opcao">
+        <input type="radio" id="pacote-conforto" name="pacote" value="Conforto" />
+        <label for="pacote-conforto">Conforto</label>
+      </div>
+      <div class="opcao">
+        <input type="radio" id="pacote-premium" name="pacote" value="Premium" />
+        <label for="pacote-premium">Premium</label>
+      </div>
+
+      <p class="rotulo-grupo">Extras (pode marcar vários):</p>
+
+      <!-- Cada checkbox tem só um "id" — vamos ler cada um SEPARADAMENTE pelo id no script.js -->
+      <div class="opcao">
+        <input type="checkbox" id="ingresso" />
+        <label for="ingresso">Ingresso para o jogo</label>
+      </div>
+      <div class="opcao">
+        <input type="checkbox" id="seguro" />
+        <label for="seguro">Seguro viagem</label>
+      </div>
+      <div class="opcao">
+        <input type="checkbox" id="traslado" />
+        <label for="traslado">Traslado do aeroporto</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Observações</legend>
+
+      <label for="observacoes">Alguma informação extra?</label>
+      <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+    </fieldset>
+
+    <button type="submit">Solicitar orçamento</button>
+
+  </form>
+
+  <!-- <div>, e não <p>, porque vamos colocar HTML (com <strong>, <br> e <h2>) aqui dentro -->
+  <div id="resumo"></div>
+
+</body>
+</html>
